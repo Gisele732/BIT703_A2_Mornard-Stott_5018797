@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Aotearoa Adventure Gear</title>
+        <meta name="description" content="Aotearoa Adventure Gear is a premium outdoor equipment retailer catering to adventure enthusiasts across New Zealand.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
+        crossorigin="anonymous">
+        <!-- Custom styles-->
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <!-- Header Section -->
+            <header class="site-header py-3 border-bottom">
+                <div class="d-flex flex-wrap align-items-center justify-content-between">
+                    <!-- Logo + search -->
+                    <div class="d-flex align-items-center gap-3">
+                        <img src="images/logo_jmgwxd/logo_jmgwxd_c_scale,w_320.png"
+                            alt="Aotearoa Adventure Gear logo"
+                            class="logo img-fluid" style="max-width: 150px;">
+
+                        <form class="site-search" action="#" method="get" role="search">
+                            <label class="visually-hidden" for="search">Search</label>
+                            <input id="search"
+                                type="search"
+                                name="q"
+                                class="form-control"
+                                placeholder="Search...">
+                        </form>
+                    </div>
+
+                    <!-- Navigation -->
+                    <nav class="main-nav" aria-label="Main navigation">
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="shop.html">Shop</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="help.html">Help</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="cart.html">Your Cart</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+
+            <main>
+                <!-- Hero Section -->
+                <section id="hero" class="hero py-5 text-center">
+                    <h1 class="display-5 fw-bold">Tagline describing your e-shop</h1>
+                    <!-- Featured product images -->
+                    <div class="d-flex justify-content-center gap-3 mb-4">
+                        <img src="images/image.svg" alt="Featured product 1" class="img-fluid" style="max-width: 120px;">
+                        <img src="images/image.svg" alt="Featured product 2" class="img-fluid" style="max-width: 120px;">
+                        <img src="images/image.svg" alt="Featured product 3" class="img-fluid" style="max-width: 120px;">
+                    </div>
+
+                    <!-- Button -->
+                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                        <a href="shop.html" class="btn btn-primary btn-lg px-4">Shop Now</a>
+                    </div>
+                </section>
+
+
+                <!-- Slideshow container -->
+                <section id="featured-products-carousel" class="py-5">
+                    <h2 class="text-center mb-4">Featured Products</h2>
+
+                    <div id="featuredCarousel" class="carousel slide" data-bs-ride="carousel">
+
+                        <!-- Indicators -->
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+
+                        <!-- Slides -->
+                        <div class="carousel-inner">
+
+                            <!-- Slide 1: products 1 & 2 -->
+                            <div class="carousel-item active">
+                                <div class="row g-3">
+                                <div class="col-md-6">
+                                    <img src="images/image.svg" class="d-block w-100" alt="Featured product 1">
+                                    <p class="mt-2 text-center mb-0">Caption for product 1</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <img src="images/image.svg" class="d-block w-100" alt="Featured product 2">
+                                    <p class="mt-2 text-center mb-0">Caption for product 2</p>
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 2: products 3 & 4 -->
+                            <div class="carousel-item">
+                                <div class="row g-3">
+                                <div class="col-md-6">
+                                    <img src="images/image.svg" class="d-block w-100" alt="Featured product 3">
+                                    <p class="mt-2 text-center mb-0">Caption for product 3</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <img src="images/image.svg" class="d-block w-100" alt="Featured product 4">
+                                    <p class="mt-2 text-center mb-0">Caption for product 4</p>
+                                </div>
+                                </div>
+                            </div>
+
+                            </div>
+
+                        <!-- Controls -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+
+                        <button class="carousel-control-next" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+
+                    </div>
+                </section>
+
+                
+                <!-- Newsletter section -->
+                <section id="newsletter" class="newsletter py-5 bg-light">
+                    <div class="text-center">
+                        <h2 class="mb-3">Newsletter</h2>
+                        <p class="mb-4">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                            Veniam sint laborum esse tenetur voluptate dicta aperiam.
+                        </p>
+                    </div>
+
+                    <form action="#" method="post" class="newsletter-form">
+                        <div class="row justify-content-center">
+                            <div class="col-md-5 mb-2 mb-md-0">
+                                <label class="visually-hidden" for="newsletter-email">Email address</label>
+                                <input id="newsletter-email"
+                                    type="email"
+                                    name="email"
+                                    class="form-control"
+                                    placeholder="Email Address"
+                                    required>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary">
+                                    Subscribe
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- Product Gallery-->
+                <section id="popular-products" class="popular-products py-5">
+                    <h2 class="mb-4 text-center">Popular Products</h2>
+
+                    <div class="row g-4">
+                        <!-- LEFT: big featured card -->
+                        <div class="col-md-6">
+                        <article class="card h-100">
+                            <img src="images/image.svg" class="card-img-top" alt="Featured product">
+                            <div class="card-body">
+                            <h3 class="card-title h4">Featured Pack</h3>
+                            <div class="mb-2">
+                                <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                            </div>
+                            <p class="card-text">Perfect for multi-day tramps across Aotearoa.</p>
+                            <p class="card-text fw-bold mb-0">$420.00</p>
+                            </div>
+                        </article>
+                        </div>
+
+                        <!-- RIGHT: 4 smaller cards in a 2x2 grid -->
+                        <div class="col-md-6">
+                        <div class="row g-3">
+                            <!-- Small card 1 -->
+                            <div class="col-6">
+                            <article class="card h-100 text-center">
+                                <img src="images/image.svg" class="card-img-top" alt="Daypack">
+                                <div class="card-body p-2">
+                                <h3 class="card-title h6 mb-1">Daypack</h3>
+                                <div class="mb-1">
+                                    <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                                </div>
+                                <p class="card-text fw-bold mb-0">$180</p>
+                                </div>
+                            </article>
+                            </div>
+
+                            <!-- Small card 2 -->
+                            <div class="col-6">
+                            <article class="card h-100 text-center">
+                                <img src="images/image.svg" class="card-img-top" alt="Sleeping Bag">
+                                <div class="card-body p-2">
+                                <h3 class="card-title h6 mb-1">Sleeping Bag</h3>
+                                <div class="mb-1">
+                                    <span class="text-warning">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+                                </div>
+                                <p class="card-text fw-bold mb-0">$240</p>
+                                </div>
+                            </article>
+                            </div>
+
+                            <!-- Small card 3 -->
+                            <div class="col-6">
+                            <article class="card h-100 text-center">
+                                <img src="images/image.svg" class="card-img-top" alt="Tent">
+                                <div class="card-body p-2">
+                                <h3 class="card-title h6 mb-1">Tent</h3>
+                                <div class="mb-1">
+                                    <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                                </div>
+                                <p class="card-text fw-bold mb-0">$360</p>
+                                </div>
+                            </article>
+                            </div>
+
+                            <!-- Small card 4 -->
+                            <div class="col-6">
+                            <article class="card h-100 text-center">
+                                <img src="images/image.svg" class="card-img-top" alt="Hiking Poles">
+                                <div class="card-body p-2">
+                                <h3 class="card-title h6 mb-1">Hiking Poles</h3>
+                                <div class="mb-1">
+                                    <span class="text-warning">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+                                </div>
+                                <p class="card-text fw-bold mb-0">$110</p>
+                                </div>
+                            </article>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </section>
+
+                <!-- About Section-->
+                <section id="about" class="about py-5 bg-light">
+                    <div class="container text-center">
+                        <h2 class="mb-4">About Your Shop</h2>
+
+                        <div class="col-lg-8 mx-auto">
+                        <p class="lead">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam distinctio,
+                            quae animi, labore, asperiores pariatur consequuntur blanditiis sequi facilis iure
+                            architecto corporis hic deleniti accusamus aut ipsa explicabo quaerat velit.
+                        </p>
+                        </div>
+                    </div>
+                    </section>
+            </main>
+            
+            <footer class="site-footer mt-5">
+                <!-- Top footer area -->
+                <div class="py-4 border-top bg-light">
+                    <div class="row row-cols-2 row-cols-md-5 g-4 align-items-start">
+                    
+                    <!-- Column 1: Logo + address -->
+                    <div class="col">
+                        <img src="images/logo_jmgwxd/logo_jmgwxd_c_scale,w_320.png"
+                            alt="AAG Logo"
+                            class="img-fluid mb-3"
+                            style="max-width: 120px;">
+                        <address class="small mb-0">
+                        1717 Harrison St, San Francisco,<br>
+                        CA 94103, USA
+                        </address>
+                    </div>
+
+                    <!-- Column 2: Main Menu -->
+                    <div class="col">
+                        <h5 class="mb-2 small text-uppercase">Main Menu</h5>
+                        <ul class="list-unstyled small mb-0">
+                        <li><a href="index.html" class="text-decoration-none">Home</a></li>
+                        <li><a href="about.html" class="text-decoration-none">About</a></li>
+                        <li><a href="shop.html" class="text-decoration-none">Shop</a></li>
+                        <li><a href="help.html" class="text-decoration-none">Help</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 3: Company -->
+                    <div class="col">
+                        <h5 class="mb-2 small text-uppercase">Company</h5>
+                        <ul class="list-unstyled small mb-0">
+                        <li><a href="about.html" class="text-decoration-none">The Company</a></li>
+                        <li><a href="careers.html" class="text-decoration-none">Careers</a></li>
+                        <li><a href="news.html" class="text-decoration-none">Press</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 4: Discover -->
+                    <div class="col">
+                        <h5 class="mb-2 small text-uppercase">Discover</h5>
+                        <ul class="list-unstyled small mb-0">
+                        <li><a href="about.html" class="text-decoration-none">The Team</a></li>
+                        <li><a href="about.html" class="text-decoration-none">Our History</a></li>
+                        <li><a href="about.html" class="text-decoration-none">Brand Motto</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 5: Find us on -->
+                    <div class="col">
+                        <h5 class="mb-2 small text-uppercase">Find Us On</h5>
+                        <ul class="list-unstyled small mb-0">
+                        <li><a href="#" class="text-decoration-none">Facebook</a></li>
+                        <li><a href="#" class="text-decoration-none">Twitter</a></li>
+                        <li><a href="#" class="text-decoration-none">Instagram</a></li>
+                        </ul>
+                    </div>
+
+                    </div>
+                </div>
+
+                <!-- Bottom bar -->
+                <div class="border-top bg-light py-2">
+                    <p class="small mb-0">
+                    &#169; Aotearoa Adventure Gear
+                    </p>
+                </div>
+                </footer>
+
+        <!-- Javascript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" 
+        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" 
+        crossorigin="anonymous"></script>
+    </body>
+</html>
