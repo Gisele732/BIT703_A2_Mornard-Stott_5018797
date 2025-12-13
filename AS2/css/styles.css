@@ -1,0 +1,80 @@
+
+:root {
+  /* Brand colours */
+  --aag-forest: #2F4B4D;   /* primary dark green */
+  --aag-sky:    #567d9a;   /* blue from sun stripes */
+  --aag-light:  #f5f7f8;   /* soft background */
+  --aag-dark:   #1b2527;   /* deeper green for text */
+
+  /* Bootstrap theme overrides */
+  --bs-primary:   var(--aag-forest);
+  --bs-secondary: var(--aag-sky);
+  --bs-light:     var(--aag-light);
+  --bs-dark:      var(--aag-dark);
+}
+
+/* Primary buttons in brand green */
+.btn-primary {
+  --bs-btn-bg: var(--aag-forest);
+  --bs-btn-border-color: var(--aag-forest);
+  --bs-btn-hover-bg: var(--aag-sky);
+  --bs-btn-hover-border-color: var(--aag-sky);
+}
+
+/* Links */
+a, .nav-link {
+  color: var(--aag-forest);
+}
+a:hover, .nav-link:hover {
+  color: var(--aag-sky);
+}
+
+/* Background bands (hero/newsletter/about) */
+#newsletter,
+#about {
+  background-color: var(--aag-light);
+}
+
+/* Base typography */
+body, p, h2, h3, h4, h5, h6 {
+  font-family: "Lexend Deca", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+/* Display font just for main headings */
+h1 {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+    url("../images/hero_image.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 50vh;               
+  padding: clamp(2rem, 6vw, 5rem) 1rem;
+  align-items: center;
+  text-align: center;
+}
+
+.hero h1,
+.hero p {
+  color: var(--aag-light);
+}
+
+/* colours for stars */
+.stars {
+    color: var(--aag-sky);
+}
+
+.hr-hero {
+  width: 30%;
+  margin: 1.5rem auto;
+  color: #f5f7f8;
+}
