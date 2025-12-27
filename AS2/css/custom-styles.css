@@ -25,6 +25,11 @@
 a, .nav-link {
   color: var(--aag-forest);
 }
+
+.nav-link.active {
+  font-weight: 600;
+}
+
 a:hover, .nav-link:hover {
   color: var(--aag-sky);
 }
@@ -50,17 +55,13 @@ h1 {
   text-transform: uppercase;
 }
 
+/* Home hero */
 .hero {
   background-image:
-    linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
-    url("../images/hero_image.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
+    linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+    var(--hero-image);
   background-size: cover;
-  min-height: 50vh;               
-  padding: clamp(2rem, 6vw, 5rem) 1rem;
-  align-items: center;
-  text-align: center;
+  background-position: center;
 }
 
 .hero h1,
@@ -73,8 +74,60 @@ h1 {
     color: var(--aag-sky);
 }
 
+/* Shop category card */
+.category-shop-card .card {
+  background-color: var(--bs-primary);
+  color: var(--bs-light);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.category-shop-card h3,
+.category-shop-card p {
+  color: var(--bs-light);
+}
+
+.category-shop-card:hover .card {
+  transform: translateY(-2px);
+  box-shadow: 0 0.75rem 1.25rem rgba(0, 0, 0, 0.15);
+}
+
+/* Remove borders from category cards and product cards */
+.featured-categories .card,
+#product-list .card {
+  border: none;
+}
+
 .hr-hero {
   width: 30%;
   margin: 1.5rem auto;
   color: #f5f7f8;
 }
+
+#product-list .object-fit-cover {
+  object-fit: cover;
+}
+
+@media (min-width: 576px) {
+  #product-list img.object-fit-cover {
+    min-height: 120px;
+  }
+}
+
+/* Stronger panel dividers for newsletter + product grid */
+.panel-divider {
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+/* Vertical divider (desktop only) */
+@media (min-width: 768px) {
+  .panel-divider-end {
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+  }
+}
+
+/* Horizontal divider */
+.panel-divider-bottom {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+

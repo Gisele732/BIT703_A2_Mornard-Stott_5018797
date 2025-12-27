@@ -11,14 +11,14 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
         crossorigin="anonymous">
         <!-- Custom styles-->
-        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/custom-styles.css">
         <!-- Fonts -->
          <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?amily=League+Spartan:wght@500;700&family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">    </head>
 
     <body>
-        <div class="container">
+        <div>
             <!-- Header Section -->
             <header class="site-header py-3 border-bottom">
                 <div class="d-flex flex-wrap align-items-center justify-content-between">
@@ -67,7 +67,8 @@
 
             <main>
                 <!-- Hero Section -->
-                <section id="hero" class="hero py-5 text-center">
+                <section id="hero" class="hero p-4 text-center"
+                style="--hero-image: url('../images/hero_image.jpg');">
                     <h1 class="py-4 ">Take a step towards your next adventure</h1>
                     <p class="lead">Shop the latest trends in outdoor gear</p>
                     <hr class="hr-hero">
@@ -85,199 +86,201 @@
                 </section>
 
 
-                <!-- Slideshow container -->
-                <section id="featured-products-carousel" class="py-5">
-                    <h2 class="text-center mb-4">Featured Products</h2>
+                <div class="container">
+                    <!-- Slideshow container -->
+                    <section id="featured-products-carousel" class="py-5">
+                        <h2 class="text-center mb-4">Featured Products</h2>
 
-                    <div id="featuredCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div id="featuredCarousel" class="carousel slide" data-bs-ride="carousel">
 
-                        <!-- Indicators -->
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            <!-- Indicators -->
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            </div>
+
+                            <!-- Slides -->
+                            <div class="carousel-inner">
+
+                                <!-- Slide 1: products 1 & 2 -->
+                                <div class="carousel-item active">
+                                    <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <img src="images/image.svg" class="d-block w-100" alt="Featured product 1">
+                                        <p class="mt-2 text-center mb-0">Caption for product 1</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="images/image.svg" class="d-block w-100" alt="Featured product 2">
+                                        <p class="mt-2 text-center mb-0">Caption for product 2</p>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <!-- Slide 2: products 3 & 4 -->
+                                <div class="carousel-item">
+                                    <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <img src="images/image.svg" class="d-block w-100" alt="Featured product 3">
+                                        <p class="mt-2 text-center mb-0">Caption for product 3</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="images/image.svg" class="d-block w-100" alt="Featured product 4">
+                                        <p class="mt-2 text-center mb-0">Caption for product 4</p>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                </div>
+
+                            <!-- Controls -->
+                            <button class="carousel-control-prev" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+
+                            <button class="carousel-control-next" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+
+                        </div>
+                    </section>
+
+                    
+                    <!-- Newsletter section -->
+                    <section id="newsletter" class="newsletter py-5">
+                        <div class="text-center">
+                            <h2 class="mb-3">Newsletter</h2>
+                            <p class="mb-4">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                Veniam sint laborum esse tenetur voluptate dicta aperiam.
+                            </p>
                         </div>
 
-                        <!-- Slides -->
-                        <div class="carousel-inner">
-
-                            <!-- Slide 1: products 1 & 2 -->
-                            <div class="carousel-item active">
-                                <div class="row g-3">
-                                <div class="col-md-6">
-                                    <img src="images/image.svg" class="d-block w-100" alt="Featured product 1">
-                                    <p class="mt-2 text-center mb-0">Caption for product 1</p>
+                        <form action="#" method="post" class="newsletter-form">
+                            <div class="row justify-content-center">
+                                <div class="col-md-5 mb-2 mb-md-0">
+                                    <label class="visually-hidden" for="newsletter-email">Email address</label>
+                                    <input id="newsletter-email"
+                                        type="email"
+                                        name="email"
+                                        class="form-control"
+                                        placeholder="Email Address"
+                                        required>
                                 </div>
-                                <div class="col-md-6">
-                                    <img src="images/image.svg" class="d-block w-100" alt="Featured product 2">
-                                    <p class="mt-2 text-center mb-0">Caption for product 2</p>
-                                </div>
-                                </div>
-                            </div>
-
-                            <!-- Slide 2: products 3 & 4 -->
-                            <div class="carousel-item">
-                                <div class="row g-3">
-                                <div class="col-md-6">
-                                    <img src="images/image.svg" class="d-block w-100" alt="Featured product 3">
-                                    <p class="mt-2 text-center mb-0">Caption for product 3</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <img src="images/image.svg" class="d-block w-100" alt="Featured product 4">
-                                    <p class="mt-2 text-center mb-0">Caption for product 4</p>
-                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-primary">
+                                        Subscribe
+                                    </button>
                                 </div>
                             </div>
+                        </form>
+                    </section>
 
-                            </div>
+                    <!-- Product Gallery-->
+                    <section id="popular-products" class="popular-products py-5">
+                        <h2 class="mb-4 text-center">Popular Products</h2>
 
-                        <!-- Controls -->
-                        <button class="carousel-control-prev" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-
-                        <button class="carousel-control-next" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-
-                    </div>
-                </section>
-
-                
-                <!-- Newsletter section -->
-                <section id="newsletter" class="newsletter py-5">
-                    <div class="text-center">
-                        <h2 class="mb-3">Newsletter</h2>
-                        <p class="mb-4">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                            Veniam sint laborum esse tenetur voluptate dicta aperiam.
-                        </p>
-                    </div>
-
-                    <form action="#" method="post" class="newsletter-form">
-                        <div class="row justify-content-center">
-                            <div class="col-md-5 mb-2 mb-md-0">
-                                <label class="visually-hidden" for="newsletter-email">Email address</label>
-                                <input id="newsletter-email"
-                                    type="email"
-                                    name="email"
-                                    class="form-control"
-                                    placeholder="Email Address"
-                                    required>
-                            </div>
-                            <div class="col-auto">
-                                <button type="submit" class="btn btn-primary">
-                                    Subscribe
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </section>
-
-                <!-- Product Gallery-->
-                <section id="popular-products" class="popular-products py-5">
-                    <h2 class="mb-4 text-center">Popular Products</h2>
-
-                    <div class="row g-4">
-                        <!-- LEFT: big featured card -->
-                        <div class="col-md-6">
-                        <article class="card h-100">
-                            <img src="images/image.svg" class="card-img-top" alt="Featured product">
-                            <div class="card-body">
-                            <h3 class="card-title h4">Featured Pack</h3>
-                            <div class="mb-2">
-                                <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
-                            </div>
-                            <p class="card-text">Perfect for multi-day tramps across Aotearoa.</p>
-                            <p class="card-text fw-bold mb-0">$420.00</p>
-                            </div>
-                        </article>
-                        </div>
-
-                        <!-- RIGHT: 4 smaller cards in a 2x2 grid -->
-                        <div class="col-md-6">
-                        <div class="row g-3">
-                            <!-- Small card 1 -->
-                            <div class="col-6">
-                            <article class="card h-100 text-center">
-                                <img src="images/image.svg" class="card-img-top" alt="Daypack">
-                                <div class="card-body p-2">
-                                <h3 class="card-title h6 mb-1">Daypack</h3>
-                                <div class="mb-1">
-                                    <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                                </div>
-                                <p class="card-text fw-bold mb-0">$180</p>
-                                </div>
-                            </article>
-                            </div>
-
-                            <!-- Small card 2 -->
-                            <div class="col-6">
-                            <article class="card h-100 text-center">
-                                <img src="images/image.svg" class="card-img-top" alt="Sleeping Bag">
-                                <div class="card-body p-2">
-                                <h3 class="card-title h6 mb-1">Sleeping Bag</h3>
-                                <div class="mb-1">
-                                    <span class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
-                                </div>
-                                <p class="card-text fw-bold mb-0">$240</p>
-                                </div>
-                            </article>
-                            </div>
-
-                            <!-- Small card 3 -->
-                            <div class="col-6">
-                            <article class="card h-100 text-center">
-                                <img src="images/image.svg" class="card-img-top" alt="Tent">
-                                <div class="card-body p-2">
-                                <h3 class="card-title h6 mb-1">Tent</h3>
-                                <div class="mb-1">
+                        <div class="row g-4">
+                            <!-- LEFT: big featured card -->
+                            <div class="col-md-6">
+                            <article class="card h-100">
+                                <img src="images/image.svg" class="card-img-top" alt="Featured product">
+                                <div class="card-body">
+                                <h3 class="card-title h4">Featured Pack</h3>
+                                <div class="mb-2">
                                     <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
                                 </div>
-                                <p class="card-text fw-bold mb-0">$360</p>
+                                <p class="card-text">Perfect for multi-day tramps across Aotearoa.</p>
+                                <p class="card-text fw-bold mb-0">$420.00</p>
                                 </div>
                             </article>
                             </div>
 
-                            <!-- Small card 4 -->
-                            <div class="col-6">
-                            <article class="card h-100 text-center">
-                                <img src="images/image.svg" class="card-img-top" alt="Hiking Poles">
-                                <div class="card-body p-2">
-                                <h3 class="card-title h6 mb-1">Hiking Poles</h3>
-                                <div class="mb-1">
-                                    <span class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+                            <!-- RIGHT: 4 smaller cards in a 2x2 grid -->
+                            <div class="col-md-6">
+                            <div class="row g-3">
+                                <!-- Small card 1 -->
+                                <div class="col-6">
+                                <article class="card h-100 text-center">
+                                    <img src="images/image.svg" class="card-img-top" alt="Daypack">
+                                    <div class="card-body p-2">
+                                    <h3 class="card-title h6 mb-1">Daypack</h3>
+                                    <div class="mb-1">
+                                        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                                    </div>
+                                    <p class="card-text fw-bold mb-0">$180</p>
+                                    </div>
+                                </article>
                                 </div>
-                                <p class="card-text fw-bold mb-0">$110</p>
+
+                                <!-- Small card 2 -->
+                                <div class="col-6">
+                                <article class="card h-100 text-center">
+                                    <img src="images/image.svg" class="card-img-top" alt="Sleeping Bag">
+                                    <div class="card-body p-2">
+                                    <h3 class="card-title h6 mb-1">Sleeping Bag</h3>
+                                    <div class="mb-1">
+                                        <span class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+                                    </div>
+                                    <p class="card-text fw-bold mb-0">$240</p>
+                                    </div>
+                                </article>
                                 </div>
-                            </article>
+
+                                <!-- Small card 3 -->
+                                <div class="col-6">
+                                <article class="card h-100 text-center">
+                                    <img src="images/image.svg" class="card-img-top" alt="Tent">
+                                    <div class="card-body p-2">
+                                    <h3 class="card-title h6 mb-1">Tent</h3>
+                                    <div class="mb-1">
+                                        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                                    </div>
+                                    <p class="card-text fw-bold mb-0">$360</p>
+                                    </div>
+                                </article>
+                                </div>
+
+                                <!-- Small card 4 -->
+                                <div class="col-6">
+                                <article class="card h-100 text-center">
+                                    <img src="images/image.svg" class="card-img-top" alt="Hiking Poles">
+                                    <div class="card-body p-2">
+                                    <h3 class="card-title h6 mb-1">Hiking Poles</h3>
+                                    <div class="mb-1">
+                                        <span class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+                                    </div>
+                                    <p class="card-text fw-bold mb-0">$110</p>
+                                    </div>
+                                </article>
+                                </div>
+                            </div> 
                             </div>
-                        </div> 
                         </div>
-                    </div>
-                    </section>
+                        </section>
 
-                <!-- About Section-->
-                <section id="about" class="about py-5">
-                    <div class="container text-center">
-                        <h2 class="mb-4">About Your Shop</h2>
+                    <!-- About Section-->
+                    <section id="about" class="about py-5">
+                        <div class="container text-center">
+                            <h2 class="mb-4">About Your Shop</h2>
 
-                        <div class="col-lg-8 mx-auto">
-                        <p class="lead">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam distinctio,
-                            quae animi, labore, asperiores pariatur consequuntur blanditiis sequi facilis iure
-                            architecto corporis hic deleniti accusamus aut ipsa explicabo quaerat velit.
-                        </p>
+                            <div class="col-lg-8 mx-auto">
+                            <p class="lead">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam distinctio,
+                                quae animi, labore, asperiores pariatur consequuntur blanditiis sequi facilis iure
+                                architecto corporis hic deleniti accusamus aut ipsa explicabo quaerat velit.
+                            </p>
+                            </div>
                         </div>
-                    </div>
-                    </section>
+                        </section>
+                </div>
             </main>
             
             <footer class="site-footer mt-5">
                 <!-- Top footer area -->
-                <div class="py-4 border-top bg-light">
+                <div class="p-4 border-top bg-light">
                     <div class="row row-cols-2 row-cols-md-5 g-4 align-items-start">
                     
                     <!-- Column 1: Logo + address -->
@@ -337,7 +340,7 @@
                 </div>
 
                 <!-- Bottom bar -->
-                <div class="border-top bg-light py-2">
+                <div class="border-top bg-light p-2">
                     <p class="small mb-0">
                     &#169; Aotearoa Adventure Gear
                     </p>
