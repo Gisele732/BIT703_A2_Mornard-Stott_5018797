@@ -55,7 +55,7 @@
               <div class="vr"></div>
               <li class="nav-item"><a class="nav-link" href="#">Help</a></li>
               <div class="vr"></div>
-              <li class="nav-item"><a class="nav-link active" href="cart.html">Your Cart <span class="badge text-bg-secondary ms-1" data-cart-count>0</span></a></li>
+              <li class="nav-item"><a class="nav-link" href="cart.html">Your Cart <span class="badge text-bg-secondary ms-1" data-cart-count>0</span></a></li>
             </ul>
           </nav>
         </div>
@@ -87,6 +87,9 @@
             </div>
           </div>
         </section>
+
+              <!-- Scroll to top button -->
+        <button onclick="topFunction()" id="myBtn" title="Go to top" class="btn btn-primary rounded-circle">Top</button>
 
         <div class="container">
           <!-- Featured Categories -->
@@ -390,6 +393,27 @@
       crossorigin="anonymous"
     ></script>
     <script src="js/cart.js"></script>
-    <script>updateCartCount()</script>
+    <script>updateCartCount()
+        /* scroll to top function */
+        // Get the button:
+        let mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+    </script>
   </body>
 </html>
