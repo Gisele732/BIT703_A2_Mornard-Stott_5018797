@@ -91,6 +91,21 @@ h1 {
   box-shadow: 0 0.75rem 1.25rem rgba(0, 0, 0, 0.15);
 }
 
+/* Consistent product/category thumbnails */
+.product-thumb {
+  width: 100%;
+  aspect-ratio: 1 / 1;   /* keeps square cards like the wireframe */
+  object-fit: cover;     /* crops nicely */
+  display: block;        /* removes tiny inline-image gaps */
+}
+
+.product-hero {
+  width: 100%;
+  max-height: 520px; 
+  object-fit: contain;
+  background: #fff;  
+}
+
 /* Remove borders from category cards and product cards */
 .featured-categories .card,
 #product-list .card {
