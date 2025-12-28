@@ -75,118 +75,230 @@
               <h1 class="h3 mb-4">Shopping Cart</h1>
               <hr class="mb-4" />
               <div id="cart-items"></div>
+
+              <div class="d-flex gap-2">
+                <button type="button" class="btn btn-primary" data-next>Next</button>
+            </div>
             </section>
 
             <!-- STEP 2 -->
             <section class="checkout-step d-none" data-step-panel="2">
-              <h1 class="h3 mb-4">Shipping Details</h1>
-              <hr class="mb-4" />
+            <h1 class="h3 mb-4">Shipping Details</h1>
+            <hr class="mb-4" />
 
-              <form>
+            <form>
                 <div class="row g-3">
-                  <div class="col-md-6">
-                    <label class="form-label">First Name</label>
-                    <input class="form-control" />
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label">Last Name</label>
-                    <input class="form-control" />
-                  </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label" for="firstName">First Name</label>
+                    <input id="firstName" class="form-control" type="text" autocomplete="given-name" />
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label" for="lastName">Last Name</label>
+                    <input id="lastName" class="form-control" type="text" autocomplete="family-name" />
+                </div>
 
-                  <div class="col-12">
-                    <label class="form-label">Address</label>
-                    <input class="form-control" />
-                  </div>
+                <div class="col-12">
+                    <label class="form-label" for="address1">Address</label>
+                    <input id="address1" class="form-control" type="text" autocomplete="street-address" />
+                </div>
 
-                  <div class="col-md-6">
-                    <label class="form-label">City</label>
-                    <input class="form-control" />
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label">Postcode</label>
-                    <input class="form-control" />
-                  </div>
+                <div class="col-12">
+                    <label class="form-label" for="address2">Address 2</label>
+                    <input id="address2" class="form-control" type="text" />
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <label class="form-label" for="country">Country</label>
+                    <select id="country" class="form-select" autocomplete="country-name">
+                    <option selected>New Zealand</option>
+                    <option>Australia</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label" for="city">City</label>
+                    <input id="city" class="form-control" type="text" autocomplete="address-level2" />
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <label class="form-label" for="postcode">Zip/Postal Code</label>
+                    <input id="postcode" class="form-control" type="text" autocomplete="postal-code" />
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label" for="phone">Phone Number</label>
+                    <input id="phone" class="form-control" type="tel" autocomplete="tel" />
+                </div>
+                </div>
+
+                <hr class="my-4" />
+
+                <!-- Shipping options -->
+                <div class="row g-3" id="shippingOptions">
+                <div class="col-12 col-md-6">
+                    <div class="border rounded p-3 h-100">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="shipping" id="shipFree" value="free" />
+                        <label class="form-check-label" for="shipFree">
+                        Free Shipping<br />
+                        <span class="text-muted small">Between 2–5 working days</span>
+                        </label>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="border rounded p-3 h-100">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="shipping" id="shipStandard" value="standard" checked />
+                        <label class="form-check-label" for="shipStandard">
+                        Standard Delivery – $15<br />
+                        <span class="text-muted small">Between 2–3 working days</span>
+                        </label>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="border rounded p-3 h-100">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="shipping" id="shipNext" value="nextday" />
+                        <label class="form-check-label" for="shipNext">
+                        Next Day Delivery – $20<br />
+                        <span class="text-muted small">24 hours from checkout</span>
+                        </label>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 d-flex align-items-center">
+                    <div id="freeShippingBanner" class="alert alert-success mb-0 w-100 d-none">
+                    Free shipping automatically applied for totals over $600.
+                    </div>
+                </div>
                 </div>
 
                 <hr class="my-4" />
 
                 <div class="d-flex gap-2">
-                  <button type="button" class="btn btn-light" data-prev>Back</button>
-                  <button type="button" class="btn btn-primary" data-next>Next</button>
+                <button type="button" class="btn btn-light px-4" data-prev>Back</button>
+                <button type="button" class="btn btn-primary px-4" data-next>Next</button>
+                <a href="shop.html" class="btn btn-light px-4">Cancel</a>
                 </div>
-              </form>
+            </form>
             </section>
 
             <!-- STEP 3 -->
             <section class="checkout-step d-none" data-step-panel="3">
-              <h1 class="h3 mb-4">Payment</h1>
-              <hr class="mb-4" />
+            <h1 class="h3 mb-4">Payment method</h1>
+            <hr class="mb-4" />
 
-              <div class="border rounded p-4 mb-4">
-                <label class="form-label">Card Number</label>
-                <input class="form-control mb-3" placeholder="0000 0000 0000 0000" />
-                <div class="row g-3">
-                  <div class="col-6">
-                    <input class="form-control" placeholder="MM/YY" />
-                  </div>
-                  <div class="col-6">
-                    <input class="form-control" placeholder="CVV" />
-                  </div>
+            <!-- Credit Card -->
+            <div class="border rounded p-4 mb-4">
+                <div class="form-check mb-3">
+                <input class="form-check-input" type="radio" name="pay" id="payCard" checked />
+                <label class="form-check-label fw-bold" for="payCard">Credit Card</label>
+                <p class="text-muted small mb-0">
+                    Enter your card details to complete checkout.
+                </p>
                 </div>
-              </div>
 
-              <div class="d-flex gap-2">
-                <button type="button" class="btn btn-light" data-prev>Back</button>
-                <button type="button" class="btn btn-primary">Pay Now</button>
-              </div>
+                <div class="row g-3">
+                <div class="col-12 col-md-6">
+                    <label class="form-label" for="cardNo">Card Number</label>
+                    <input id="cardNo" class="form-control" type="text" placeholder="0000 0000 0000 0000" />
+                </div>
+                <div class="col-6 col-md-3">
+                    <label class="form-label" for="exp">Exp.</label>
+                    <input id="exp" class="form-control" type="text" placeholder="MM/YY" />
+                </div>
+                <div class="col-6 col-md-3">
+                    <label class="form-label" for="cvv">CVV</label>
+                    <input id="cvv" class="form-control" type="text" placeholder="CVV" />
+                </div>
+                <div class="col-12">
+                    <label class="form-label" for="cardName">Card Holder Name</label>
+                    <input id="cardName" class="form-control" type="text" placeholder="Card Holder Name" />
+                </div>
+                </div>
+            </div>
+
+            <!-- PayPal -->
+            <div class="border rounded p-4 mb-4 d-flex align-items-center justify-content-between">
+                <div>
+                <div class="form-check mb-1">
+                    <input class="form-check-input" type="radio" name="pay" id="payPaypal" />
+                    <label class="form-check-label fw-bold" for="payPaypal">Paypal</label>
+                </div>
+                <p class="text-muted small mb-0">
+                    Continue to PayPal to complete payment.
+                </p>
+                </div>
+                <div class="text-muted fw-bold">PayPal</div>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="button" class="btn btn-light px-4" data-prev>Back</button>
+                <button type="button" class="btn btn-primary px-4">Pay Now</button>
+                <a href="shop.html" class="btn btn-light px-4">Cancel</a>
+            </div>
             </section>
 
           </div>
 
           <!-- RIGHT -->
-          <aside class="col-12 col-lg-5">
+            <aside class="col-12 col-lg-5">
             <h2 class="h3 mb-4">Summary</h2>
-            <hr />
+            <hr class="mb-3" />
 
-            <div class="mb-4">
-                <label for="coupon" class="small fw-bold text-uppercase mb-2 d-block">
-                    Enter coupon code
-                </label>
+            <!-- Summary items (images + name + price) -->
+            <div id="summary-items" class="mb-4"></div>
+
+            <!-- Voucher dropdown (wireframe style) -->
+            <button
+                type="button"
+                class="btn btn-link px-0 text-decoration-none d-flex align-items-center justify-content-between w-100"
+                id="voucherToggle"
+                aria-expanded="false"
+                aria-controls="voucherPanel"
+            >
+                <span class="small text-uppercase text-muted">Have a voucher?</span>
+                <span aria-hidden="true">▾</span>
+            </button>
+
+            <div id="voucherPanel" class="d-none mb-4">
                 <div class="input-group">
-                    <input
+                <input
                     type="text"
                     id="coupon"
                     class="form-control"
                     placeholder="Coupon code"
                     aria-label="Coupon code"
-                    />
-                    <button type="button" class="btn btn-outline-secondary">Apply</button>
-
+                />
+                <button type="button" class="btn btn-outline-secondary">Apply</button>
                 </div>
             </div>
 
             <div class="d-flex justify-content-between mb-2">
-              <span>Subtotal</span>
-              <span id="summary-subtotal">$0</span>
+                <span class="text-muted small text-uppercase">Subtotal</span>
+                <span id="summary-subtotal">$0</span>
             </div>
 
             <div class="d-flex justify-content-between mb-2">
-              <span>Shipping</span>
-              <span id="summary-shipping">FREE</span>
+                <span class="text-muted small text-uppercase">Shipping</span>
+                <span id="summary-shipping">FREE</span>
             </div>
 
-            <div class="d-flex justify-content-between mb-2">
-              <span>Tax</span>
-              <span id="summary-taxes">$0</span>
+            <div class="d-flex justify-content-between mb-3">
+                <span class="text-muted small text-uppercase">Taxes</span>
+                <span id="summary-taxes">$0</span>
             </div>
 
             <hr />
 
-            <div class="d-flex justify-content-between fw-bold">
-              <span>Total</span>
-              <span id="summary-total">$0</span>
+            <div class="d-flex justify-content-between align-items-baseline fw-bold">
+                <span class="text-muted text-uppercase">Total</span>
+                <span id="summary-total" class="fs-4">$0</span>
             </div>
-          </aside>
+            </aside>
 
         </div>
       </section>
@@ -208,34 +320,57 @@
   updateCartCount();
   renderCartStep1({
     itemsContainerSelector: "#cart-items",
+    summaryItemsSelector: "#summary-items",
     subtotalSelector: "#summary-subtotal",
     shippingSelector: "#summary-shipping",
     taxesSelector: "#summary-taxes",
-    totalSelector: "#summary-total"
+    totalSelector: "#summary-total",
   });
 </script>
-
 <script>
-  const tabs = document.querySelectorAll(".step-tab");
-  const panels = document.querySelectorAll("[data-step-panel]");
+  const tabs = Array.from(document.querySelectorAll(".step-tab"));
+  const panels = Array.from(document.querySelectorAll("[data-step-panel]"));
+
+  function getActiveStep() {
+    return (
+      Number(tabs.find((t) => t.classList.contains("is-active"))?.dataset.step) ||
+      1
+    );
+  }
 
   function setStep(step) {
-    tabs.forEach(t => {
-      t.classList.toggle("is-active", t.dataset.step === step);
+    const s = Number(step);
+
+    // Tabs
+    tabs.forEach((t) => {
+      const isActive = Number(t.dataset.step) === s;
+      t.classList.toggle("is-active", isActive);
+      if (isActive) t.setAttribute("aria-current", "step");
+      else t.removeAttribute("aria-current");
     });
-    panels.forEach(p => {
-      p.classList.toggle("d-none", p.dataset.stepPanel !== step);
+
+    // Panels
+    panels.forEach((p) => {
+      const show = Number(p.dataset.stepPanel) === s;
+      p.classList.toggle("d-none", !show);
     });
   }
 
-  tabs.forEach(t => t.addEventListener("click", () => setStep(t.dataset.step)));
+  // Click top tabs
+  tabs.forEach((t) => t.addEventListener("click", () => setStep(t.dataset.step)));
 
-  document.addEventListener("click", e => {
-    if (e.target.closest("[data-next]")) setStep("2");
-    if (e.target.closest("[data-prev]")) setStep("1");
+  // Next/Prev buttons
+  document.addEventListener("click", (e) => {
+    const next = e.target.closest("[data-next]");
+    const prev = e.target.closest("[data-prev]");
+    if (!next && !prev) return;
+
+    const active = getActiveStep();
+    if (next) setStep(Math.min(3, active + 1));
+    if (prev) setStep(Math.max(1, active - 1));
   });
 
-  setStep("1");
+  setStep(1);
 </script>
 </body>
 </html>

@@ -160,6 +160,8 @@
     <script src="js/cart.js"></script>
 
     <script>
+        updateCartCount();
+        
     function starsHTML(rating) {
         const full = "&#9733;".repeat(Math.max(0, Math.min(5, rating)));
         const empty = "&#9734;".repeat(5 - Math.max(0, Math.min(5, rating)));
