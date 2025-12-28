@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Aotearoa Adventure Gear | Cart</title>
+  <meta name="description" content="Shopping cart checkout flow." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/custom-styles.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&family=Lexend+Deca:wght@100..900&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
+<body>
+<div>
+  <!-- Header -->
+  <header class="py-3 border-bottom">
+    <div class="container d-flex flex-wrap align-items-center justify-content-between gap-3">
+      <img
+        src="images/logo_jmgwxd/logo_jmgwxd_c_scale,w_320.png"
+        alt="Aotearoa Adventure Gear logo"
+        class="logo img-fluid"
+        style="max-width:150px"
+      />
+
+      <nav class="main-nav">
+        <ul class="nav flex-wrap">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <div class="vr"></div>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <div class="vr"></div>
+          <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+          <div class="vr"></div>
+          <li class="nav-item">
+            <a class="nav-link active" href="cart.html">
+              Your Cart <span class="badge text-bg-secondary ms-1" data-cart-count>0</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <!-- Steps -->
+      <section class="py-4 border-bottom">
+        <nav class="checkout-steps">
+          <button class="step-tab is-active" data-step="1" aria-current="step">
+            1. Shopping Cart
+          </button>
+          <button class="step-tab" data-step="2">2. Shipping Details</button>
+          <button class="step-tab" data-step="3">3. Payment Options</button>
+        </nav>
+      </section>
+
+      <!-- Content -->
+      <section class="py-5">
+        <div class="row g-5">
+
+          <!-- LEFT -->
+          <div class="col-12 col-lg-7">
+
+            <!-- STEP 1 -->
+            <section class="checkout-step" data-step-panel="1">
+              <h1 class="h3 mb-4">Shopping Cart</h1>
+              <hr class="mb-4" />
+              <div id="cart-items"></div>
+            </section>
+
+            <!-- STEP 2 -->
+            <section class="checkout-step d-none" data-step-panel="2">
+              <h1 class="h3 mb-4">Shipping Details</h1>
+              <hr class="mb-4" />
+
+              <form>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">First Name</label>
+                    <input class="form-control" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Last Name</label>
+                    <input class="form-control" />
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label">Address</label>
+                    <input class="form-control" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label">City</label>
+                    <input class="form-control" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Postcode</label>
+                    <input class="form-control" />
+                  </div>
+                </div>
+
+                <hr class="my-4" />
+
+                <div class="d-flex gap-2">
+                  <button type="button" class="btn btn-light" data-prev>Back</button>
+                  <button type="button" class="btn btn-primary" data-next>Next</button>
+                </div>
+              </form>
+            </section>
+
+            <!-- STEP 3 -->
+            <section class="checkout-step d-none" data-step-panel="3">
+              <h1 class="h3 mb-4">Payment</h1>
+              <hr class="mb-4" />
+
+              <div class="border rounded p-4 mb-4">
+                <label class="form-label">Card Number</label>
+                <input class="form-control mb-3" placeholder="0000 0000 0000 0000" />
+                <div class="row g-3">
+                  <div class="col-6">
+                    <input class="form-control" placeholder="MM/YY" />
+                  </div>
+                  <div class="col-6">
+                    <input class="form-control" placeholder="CVV" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex gap-2">
+                <button type="button" class="btn btn-light" data-prev>Back</button>
+                <button type="button" class="btn btn-primary">Pay Now</button>
+              </div>
+            </section>
+
+          </div>
+
+          <!-- RIGHT -->
+          <aside class="col-12 col-lg-5">
+            <h2 class="h3 mb-4">Summary</h2>
+            <hr />
+
+            <div class="mb-4">
+                <label for="coupon" class="small fw-bold text-uppercase mb-2 d-block">
+                    Enter coupon code
+                </label>
+                <div class="input-group">
+                    <input
+                    type="text"
+                    id="coupon"
+                    class="form-control"
+                    placeholder="Coupon code"
+                    aria-label="Coupon code"
+                    />
+                    <button type="button" class="btn btn-outline-secondary">Apply</button>
+
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between mb-2">
+              <span>Subtotal</span>
+              <span id="summary-subtotal">$0</span>
+            </div>
+
+            <div class="d-flex justify-content-between mb-2">
+              <span>Shipping</span>
+              <span id="summary-shipping">FREE</span>
+            </div>
+
+            <div class="d-flex justify-content-between mb-2">
+              <span>Tax</span>
+              <span id="summary-taxes">$0</span>
+            </div>
+
+            <hr />
+
+            <div class="d-flex justify-content-between fw-bold">
+              <span>Total</span>
+              <span id="summary-total">$0</span>
+            </div>
+          </aside>
+
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer mt-5">
+    <div class="bg-light p-3 text-center small">
+      © Aotearoa Adventure Gear
+    </div>
+  </footer>
+</div>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+
+<script>
+  updateCartCount();
+  renderCartStep1({
+    itemsContainerSelector: "#cart-items",
+    subtotalSelector: "#summary-subtotal",
+    shippingSelector: "#summary-shipping",
+    taxesSelector: "#summary-taxes",
+    totalSelector: "#summary-total"
+  });
+</script>
+
+<script>
+  const tabs = document.querySelectorAll(".step-tab");
+  const panels = document.querySelectorAll("[data-step-panel]");
+
+  function setStep(step) {
+    tabs.forEach(t => {
+      t.classList.toggle("is-active", t.dataset.step === step);
+    });
+    panels.forEach(p => {
+      p.classList.toggle("d-none", p.dataset.stepPanel !== step);
+    });
+  }
+
+  tabs.forEach(t => t.addEventListener("click", () => setStep(t.dataset.step)));
+
+  document.addEventListener("click", e => {
+    if (e.target.closest("[data-next]")) setStep("2");
+    if (e.target.closest("[data-prev]")) setStep("1");
+  });
+
+  setStep("1");
+</script>
+</body>
+</html>

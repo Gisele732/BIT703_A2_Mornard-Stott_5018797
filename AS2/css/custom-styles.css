@@ -145,4 +145,39 @@ h1 {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
+.checkout-steps {
+  display: flex;
+  gap: 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.step-tab {
+  background: transparent;
+  border: 0;
+  padding: 0.75rem 1rem;
+  color: var(--bs-secondary);
+  position: relative;
+  font-family: "League Spartan", sans-serif;
+}
+
+.step-tab::after {
+  content: "";
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: -1px;
+  height: 2px;
+  background: transparent;
+}
+
+.step-tab.is-active {
+  color: var(--bs-dark);
+}
+
+.step-tab.is-active::after {
+  background: var(--bs-secondary);
+}
+
+
 
