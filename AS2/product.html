@@ -42,18 +42,17 @@
             </a>
           </div>
 
-          <nav class="main-nav" aria-label="Main navigation">
-            <ul class="nav flex-wrap">
-              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-              <div class="vr"></div>
-              <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-              <div class="vr"></div>
-              <li class="nav-item"><a class="nav-link " href="shop.html">Shop</a></li>
-              <div class="vr"></div>
-              <li class="nav-item"><a class="nav-link" href="#">Help</a></li>
-              <div class="vr"></div>
-              <li class="nav-item"><a class="nav-link" href="cart.html">Your Cart <span class="badge text-bg-secondary ms-1" data-cart-count>0</span></a></li>
-            </ul>
+           <!-- Top Menu -->
+          <nav class="nav" aria-label="Main navigation">
+            <a class="nav-link" href="index.html">Home</a>
+            <div class="vr"></div>
+            <a class="nav-link" href="#">About</a>
+            <div class="vr"></div>
+            <a class="nav-link active fw-semibold" href="shop.html">Shop</a>
+            <div class="vr"></div>
+            <a class="nav-link" href="#">Help</a>
+            <div class="vr"></div>
+            <a class="nav-link" href="cart.html">Your Cart <span class="badge text-bg-secondary ms-1" data-cart-count>0</span></a>
           </nav>
         </div>
       </header>
@@ -82,7 +81,7 @@
                 <h1 id="productTitle" class="mb-2">Product title</h1>
 
                 <div class="d-flex align-items-center gap-2 mb-4">
-                  <span id="productStars" class="stars" aria-label="Product rating"></span>
+                  <span id="productStars" class="stars text-secondary" aria-label="Product rating"></span>
                   <span id="productReviewCount" class="text-muted small"></span>
                 </div>
 
@@ -108,7 +107,7 @@
             </div>
           </section>
 
-                        <!-- Scroll to top button -->
+        <!-- Scroll to top button -->
         <button onclick="topFunction()" id="myBtn" title="Go to top" class="btn btn-primary rounded-circle">Top</button>
 
           <!-- Similar Products -->
@@ -130,17 +129,15 @@
         <div class="p-4 border-top bg-light">
           <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center">
-              <nav class="main-nav" aria-label="Main navigation">
-                <ul class="nav flex-wrap">
-                  <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                  <div class="vr"></div>
-                  <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                  <div class="vr"></div>
-                  <li class="nav-item"><a class="nav-link active" href="shop.html">Shop</a></li>
-                  <div class="vr"></div>
-                  <li class="nav-item"><a class="nav-link" href="#">Help</a></li>
-                </ul>
-              </nav>
+                <nav class="nav" aria-label="Main navigation">
+                    <a class="nav-link" href="index.html">Home</a>
+                    <div class="vr"></div>
+                    <a class="nav-link" href="#">About</a>
+                    <div class="vr"></div>
+                    <a class="nav-link active fw-semibold" href="shop.html">Shop</a>
+                    <div class="vr"></div>
+                    <a class="nav-link" href="#">Help</a>
+                </nav>
             </div>
           </div>
         </div>
@@ -272,7 +269,7 @@
                 <img src="${p.image}" alt="${p.name}" class="img-fluid" style="max-width: 110px" />
                 <div>
                 <p class="mb-1 small text-uppercase text-muted">${p.name}</p>
-                <div class="mb-1"><span class="stars">${starsHTML(p.rating)}</span></div>
+                <div class="mb-1"><span class="stars text-secondary">${starsHTML(p.rating)}</span></div>
                 <p class="mb-0">${currency(p.price)}</p>
                 </div>
             </div>
@@ -288,7 +285,7 @@
 
         product.reviews.forEach((r, idx) => {
         const row = document.createElement("div");
-        row.className = `row g-4 align-items-start py-4 border-top`;
+        row.className = `row g-4 align-items-start py-4 border-bottom`;
         row.innerHTML = `
             <div class="col-12 col-md-4">
             <div class="d-flex align-items-start gap-3">
@@ -299,12 +296,12 @@
                 <div>
                 <p class="mb-0 fw-bold">${r.name}</p>
                 <p class="mb-2 text-muted small">${r.date}</p>
-                <div><span class="stars">${starsHTML(r.rating)}</span></div>
+                <div><span class="stars text-secondary">${starsHTML(r.rating)}</span></div>
                 </div>
             </div>
             </div>
             <div class="col-12 col-md-8">
-            <p class="text-muted mb-0">${r.text}</p>
+            <p class="text-muted">${r.text}</p>
             </div>
         `;
         wrap.appendChild(row);

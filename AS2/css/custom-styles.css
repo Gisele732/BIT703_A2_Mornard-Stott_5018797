@@ -1,16 +1,31 @@
 
-:root {
-  /* Brand colours */
-  --aag-forest: #2F4B4D;   /* primary dark green */
-  --aag-sky:    #567d9a;   /* blue from sun stripes */
-  --aag-light:  #f5f7f8;   /* soft background */
-  --aag-dark:   #1b2527;   /* deeper green for text */
+/* Bootstrap-first theme tokens (works with 5.3 utilities/components) */
+:root{
+  /* Brand palette (project tokens) */
+  --aag-forest: #2F4B4D;
+  --aag-sky:   #567d9a;
+  --aag-light: #f5f7f8;
+  --aag-dark:  #1b2527;
 
-  /* Bootstrap theme overrides */
+  /* Map brand → Bootstrap theme colors */
   --bs-primary:   var(--aag-forest);
   --bs-secondary: var(--aag-sky);
   --bs-light:     var(--aag-light);
   --bs-dark:      var(--aag-dark);
+
+  /* Required for Bootstrap 5.3 color utilities (rgba(var(--bs-*-rgb), ...)) */
+  --bs-primary-rgb:   47, 75, 77;     /* #2F4B4D */
+  --bs-secondary-rgb: 86, 125, 154;   /* #567d9a */
+  --bs-light-rgb:     245, 247, 248;  /* #f5f7f8 */
+  --bs-dark-rgb:      27, 37, 39;     /* #1b2527 */
+
+  /* Links (so <a> and .nav-link follow theme without extra CSS) */
+  --bs-link-color:       var(--bs-primary);
+  --bs-link-hover-color: var(--bs-secondary);
+
+  /* Optional: set default body text emphasis to match your dark token */
+  --bs-body-color: var(--aag-dark);
+  --bs-body-bg:    #fff;
 }
 
 /* Primary buttons in brand green */
@@ -19,19 +34,6 @@
   --bs-btn-border-color: var(--aag-forest);
   --bs-btn-hover-bg: var(--aag-sky);
   --bs-btn-hover-border-color: var(--aag-sky);
-}
-
-/* Links */
-a, .nav-link {
-  color: var(--aag-forest);
-}
-
-.nav-link.active {
-  font-weight: 600;
-}
-
-a:hover, .nav-link:hover {
-  color: var(--aag-sky);
 }
 
 /* Scroll to top Button */
@@ -46,15 +48,15 @@ a:hover, .nav-link:hover {
   font-size: 18px; /* Increase font size */
 }
 
-/* Background bands (hero/newsletter/about) */
-#newsletter,
-#about {
-  background-color: var(--aag-light);
+/* Base typography */
+body, p, h3, h4, h5, h6 {
+  font-family: "Lexend Deca", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
-/* Base typography */
-body, p, h2, h3, h4, h5, h6 {
-  font-family: "Lexend Deca", sans-serif;
+h2 {
+  font-family: "League Spartan", system-ui, sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
@@ -74,16 +76,6 @@ h1 {
     var(--hero-image);
   background-size: cover;
   background-position: center;
-}
-
-.hero h1,
-.hero p {
-  color: var(--aag-light);
-}
-
-/* colours for stars */
-.stars {
-    color: var(--aag-sky);
 }
 
 /* Shop category card */
@@ -118,18 +110,6 @@ h1 {
   background: #fff;  
 }
 
-/* Remove borders from category cards and product cards */
-.featured-categories .card,
-#product-list .card {
-  border: none;
-}
-
-.hr-hero {
-  width: 30%;
-  margin: 1.5rem auto;
-  color: #f5f7f8;
-}
-
 #product-list .object-fit-cover {
   object-fit: cover;
 }
@@ -156,40 +136,5 @@ h1 {
 .panel-divider-bottom {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
-
-.checkout-steps {
-  display: flex;
-  gap: 0;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.step-tab {
-  background: transparent;
-  border: 0;
-  padding: 0.75rem 1rem;
-  color: var(--bs-secondary);
-  position: relative;
-  font-family: "League Spartan", sans-serif;
-}
-
-.step-tab::after {
-  content: "";
-  position: absolute;
-  left: 0.75rem;
-  right: 0.75rem;
-  bottom: -1px;
-  height: 2px;
-  background: transparent;
-}
-
-.step-tab.is-active {
-  color: var(--bs-dark);
-}
-
-.step-tab.is-active::after {
-  background: var(--bs-secondary);
-}
-
 
 
