@@ -225,23 +225,6 @@ function renderSummaryItems(items, containerSelector) {
     .join("");
 }
 
-/* Voucher dropdown toggle */
-function setupVoucherToggle() {
-  const btn = document.getElementById("voucherToggle");
-  const panel = document.getElementById("voucherPanel");
-  if (!btn || !panel) return;
-
-  // prevent double-binding if you re-init
-  if (btn.dataset.bound === "1") return;
-  btn.dataset.bound = "1";
-
-  btn.addEventListener("click", () => {
-    const isOpen = !panel.classList.contains("d-none");
-    panel.classList.toggle("d-none", isOpen);
-    btn.setAttribute("aria-expanded", String(!isOpen));
-  });
-}
-
 /* Cart page rendering */
 function renderCartStep1({
   itemsContainerSelector,
@@ -358,9 +341,6 @@ function renderCartStep1({
       });
     });
   });
-
-  // ensure voucher toggle works if present
-  setupVoucherToggle();
 }
 
 /* Utility: read product id from ?id= */

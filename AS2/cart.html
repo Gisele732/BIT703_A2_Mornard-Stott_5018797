@@ -23,33 +23,65 @@
 <body>
 <div>
   <!-- Header -->
-      <header class="py-3 border-bottom">
-        <div class="container d-flex flex-wrap align-items-center justify-content-between gap-3">
-          <div class="d-flex align-items-center gap-3">
-            <a href="index.html">
+      <header class="border-bottom bg-white">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+
+            <!-- Brand -->
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
                 <img
                 src="images/logo_jmgwxd/logo_jmgwxd_c_scale,w_320.png"
                 alt="Aotearoa Adventure Gear logo"
-                class="logo img-fluid"
+                class="img-fluid"
                 style="max-width: 150px"
                 />
             </a>
-          </div>
 
-           <!-- Top Menu -->
-          <nav class="nav" aria-label="Main navigation">
-            <a class="nav-link" href="index.html">Home</a>
-            <div class="vr"></div>
-            <a class="nav-link" href="#">About</a>
-            <div class="vr"></div>
-            <a class="nav-link" href="shop.html">Shop</a>
-            <div class="vr"></div>
-            <a class="nav-link" href="#">Help</a>
-            <div class="vr"></div>
-            <a class="nav-link active fw-semibold" href="cart.html">Your Cart <span class="badge text-bg-secondary ms-1" data-cart-count>0</span></a>
-          </nav>
-        </div>
-      </header>
+            <!-- Toggler (mobile) -->
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <!-- Nav links -->
+                 <ul class="navbar-nav ms-lg-auto align-items-lg-center gap-lg-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html" data-nav="home">Home</a>
+                    </li>
+                    <div class="vr d-none d-lg-block"></div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-nav="about">About</a>
+                    </li>
+                    <div class="vr d-none d-lg-block"></div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop.html" data-nav="shop">Shop</a>
+                    </li>
+                    <div class="vr d-none d-lg-block"></div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-nav="help">Help</a>
+                    </li>
+                    <div class="vr d-none d-lg-block"></div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html" data-nav="cart">
+                        Your Cart
+                        <span class="badge text-bg-secondary ms-1" data-cart-count>0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            </div>
+        </nav>
+        </header>
 
   <main>
     <div>
@@ -282,30 +314,46 @@
                 <!-- Summary items (images + name + price) -->
                 <div id="summary-items" class="mb-4"></div>
 
-                <!-- Voucher dropdown (wireframe style) -->
-                <button
-                    type="button"
-                    class="btn btn-link px-0 text-decoration-none d-flex align-items-center justify-content-between w-100"
-                    id="voucherToggle"
-                    aria-expanded="false"
-                    aria-controls="voucherPanel"
-                >
-                    <span class="small text-uppercase text-muted">Have a voucher?</span>
-                    <span aria-hidden="true">▾</span>
-                </button>
+                <!-- Voucher (Bootstrap accordion) -->
+                <div class="accordion mb-4" id="voucherAccordion">
+                <div class="accordion-item border-0">
+                    <h2 class="accordion-header" id="voucherHeading">
+                    <button
+                        class="accordion-button collapsed px-0 py-2 bg-transparent shadow-none text-muted small text-uppercase"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#voucherPanel"
+                        aria-expanded="false"
+                        aria-controls="voucherPanel"
+                    >
+                        Have a voucher?
+                    </button>
+                    </h2>
 
-                <div id="voucherPanel" class="d-none mb-4">
-                    <div class="input-group">
-                    <input
-                        type="text"
-                        id="coupon"
-                        class="form-control"
-                        placeholder="Coupon code"
-                        aria-label="Coupon code"
-                    />
-                    <button type="button" class="btn btn-outline-secondary">Apply</button>
+                    <div
+                    id="voucherPanel"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="voucherHeading"
+                    data-bs-parent="#voucherAccordion"
+                    >
+                    <div class="accordion-body px-0 pt-2">
+                        <div class="input-group">
+                        <input
+                            type="text"
+                            id="coupon"
+                            class="form-control"
+                            placeholder="Coupon code"
+                            aria-label="Coupon code"
+                        />
+                        <button type="button" class="btn btn-outline-secondary">
+                            Apply
+                        </button>
+                        </div>
+                    </div>
                     </div>
                 </div>
+                </div>
+
 
                 <div class="d-flex justify-content-between mb-2">
                     <span class="text-muted small text-uppercase">Subtotal</span>
