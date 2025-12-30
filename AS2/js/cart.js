@@ -1,7 +1,7 @@
 // js/cart.js
 const CART_KEY = "aag_cart_v1";
 
-// Cart constants (assignment)
+// Cart constants
 const SHIPPING_FEE = 15;
 const NEXT_DAY_FEE = 20;
 const FREE_SHIPPING_THRESHOLD = 600;

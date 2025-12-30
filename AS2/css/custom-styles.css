@@ -110,12 +110,6 @@ h1 {
   object-fit: cover;
 }
 
-@media (min-width: 576px) {
-  #product-list img.object-fit-cover {
-    min-height: 120px;
-  }
-}
-
 /* Stronger panel dividers for newsletter + product grid */
 .panel-divider {
   border-color: rgba(0, 0, 0, 0.12);
@@ -159,5 +153,3 @@ h1 {
   height: 260px;
   object-fit: cover;
 }
-
-.object-fit-cover { object-fit: cover; }

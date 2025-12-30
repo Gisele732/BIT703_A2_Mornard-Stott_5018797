@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -148,20 +149,23 @@
                 <h1 class="h3 mb-4">Shipping Details</h1>
                 <hr class="mb-4" />
 
-                <form>
+                <form id="shippingForm" class="needs-validation" novalidate>
                     <div class="row g-3">
                     <div class="col-12 col-md-6">
                         <label class="form-label" for="firstName">First Name</label>
-                        <input id="firstName" class="form-control" type="text" autocomplete="given-name" />
+                        <input id="firstName" class="form-control" type="text" autocomplete="given-name" required />
+                        <div class="invalid-feedback">Please enter your first name.</div>
                     </div>
                     <div class="col-12 col-md-6">
                         <label class="form-label" for="lastName">Last Name</label>
-                        <input id="lastName" class="form-control" type="text" autocomplete="family-name" />
+                        <input id="lastName" class="form-control" type="text" autocomplete="family-name" required />
+                        <div class="invalid-feedback">Please enter your last name.</div>
                     </div>
 
                     <div class="col-12">
                         <label class="form-label" for="address1">Address</label>
-                        <input id="address1" class="form-control" type="text" autocomplete="street-address" />
+                        <input id="address1" class="form-control" type="text" autocomplete="street-address" required />
+                        <div class="invalid-feedback">Please enter your address.</div>
                     </div>
 
                     <div class="col-12">
@@ -171,23 +175,27 @@
 
                     <div class="col-12 col-md-6">
                         <label class="form-label" for="country">Country</label>
-                        <select id="country" class="form-select" autocomplete="country-name">
+                        <select id="country" class="form-select" autocomplete="country-name" required>
                         <option selected>New Zealand</option>
                         <option>Australia</option>
                         </select>
+                        <div class="invalid-feedback">Please select a country.</div>
                     </div>
                     <div class="col-12 col-md-6">
                         <label class="form-label" for="city">City</label>
-                        <input id="city" class="form-control" type="text" autocomplete="address-level2" />
+                        <input id="city" class="form-control" type="text" autocomplete="address-level2" required />
+                        <div class="invalid-feedback">Please enter your city.</div>
                     </div>
 
                     <div class="col-12 col-md-6">
                         <label class="form-label" for="postcode">Zip/Postal Code</label>
-                        <input id="postcode" class="form-control" type="text" autocomplete="postal-code" />
+                        <input id="postcode" class="form-control" type="text" autocomplete="postal-code" inputmode="numeric" required />
+                        <div class="invalid-feedback" id="postcodeFeedback">Please enter a valid postcode.</div>
                     </div>
                     <div class="col-12 col-md-6">
                         <label class="form-label" for="phone">Phone Number</label>
-                        <input id="phone" class="form-control" type="tel" autocomplete="tel" />
+                        <input id="phone" class="form-control" type="tel" autocomplete="tel" inputmode="tel" required />
+                        <div class="invalid-feedback" id="phoneFeedback">Please enter a valid phone number.</div>
                     </div>
                     </div>
 
@@ -210,7 +218,7 @@
                     <div class="col-12 col-md-6">
                         <div class="border rounded p-3 h-100">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="shipping" id="shipStandard" value="standard" checked />
+                            <input class="form-check-input" type="radio" name="shipping" id="shipStandard" value="standard" checked required />
                             <label class="form-check-label" for="shipStandard">
                             Standard Delivery – $15<br />
                             <span class="text-muted small">Between 2–3 working days</span>
@@ -253,6 +261,12 @@
                 <h1 class="h3 mb-4">Payment method</h1>
                 <hr class="mb-4" />
 
+                <form id="paymentForm" class="needs-validation" novalidate>
+
+                <div id="checkoutComplete" class="alert alert-success d-none" role="alert">
+                    Checkout complete (demo). No payment is processed.
+                </div>
+
                 <!-- Credit Card -->
                 <div class="border rounded p-4 mb-4">
                     <div class="form-check mb-3">
@@ -266,19 +280,23 @@
                     <div class="row g-3">
                     <div class="col-12 col-md-6">
                         <label class="form-label" for="cardNo">Card Number</label>
-                        <input id="cardNo" class="form-control" type="text" placeholder="0000 0000 0000 0000" />
+                        <input id="cardNo" class="form-control" type="text" placeholder="0000 0000 0000 0000" inputmode="numeric" autocomplete="cc-number" required />
+                        <div class="invalid-feedback" id="cardNoFeedback">Please enter a valid card number.</div>
                     </div>
                     <div class="col-6 col-md-3">
                         <label class="form-label" for="exp">Exp.</label>
-                        <input id="exp" class="form-control" type="text" placeholder="MM/YY" />
+                        <input id="exp" class="form-control" type="text" placeholder="MM/YY" inputmode="numeric" autocomplete="cc-exp" required />
+                        <div class="invalid-feedback" id="expFeedback">Please enter a valid expiry date (MM/YY).</div>
                     </div>
                     <div class="col-6 col-md-3">
                         <label class="form-label" for="cvv">CVV</label>
-                        <input id="cvv" class="form-control" type="text" placeholder="CVV" />
+                        <input id="cvv" class="form-control" type="text" placeholder="CVV" inputmode="numeric" autocomplete="cc-csc" required />
+                        <div class="invalid-feedback" id="cvvFeedback">Please enter a valid CVV.</div>
                     </div>
                     <div class="col-12">
                         <label class="form-label" for="cardName">Card Holder Name</label>
-                        <input id="cardName" class="form-control" type="text" placeholder="Card Holder Name" />
+                        <input id="cardName" class="form-control" type="text" placeholder="Card Holder Name" autocomplete="cc-name" required />
+                        <div class="invalid-feedback">Please enter the card holder name.</div>
                     </div>
                     </div>
                 </div>
@@ -299,9 +317,11 @@
 
                 <div class="d-flex gap-2">
                     <button type="button" class="btn btn-light px-4" data-prev>Back</button>
-                    <button type="button" class="btn btn-primary px-4">Pay Now</button>
+                    <button type="submit" class="btn btn-primary px-4">Pay Now</button>
                     <a href="shop.html" class="btn btn-light px-4">Cancel</a>
                 </div>
+
+                </form>
                 </section>
 
             </div>
