@@ -88,8 +88,11 @@
           </div>
         </section>
 
-              <!-- Scroll to top button -->
-        <button onclick="topFunction()" id="myBtn" title="Go to top" class="btn btn-primary rounded-circle">Top</button>
+        <!-- Scroll to top button -->
+        <button id="topBtn" 
+        title="Go to top"  
+        class="btn btn-primary position-fixed bottom-0 end-0 m-3 rounded-circle d-flex align-items-center justify-content-center d-none"
+        type="button" aria-label="Scroll to top">Top</button>
 
         <div class="container">
           <!-- Featured Categories -->
@@ -239,7 +242,7 @@
                             <div class="card-body d-flex flex-column justify-content-center">
                               <h3 class="h6 mb-1">Ridge Daypack</h3>
                               <div class="mb-2">
-                                <span class="stars text-secondary">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                                <span class="text-secondary">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
                               </div>
                               <p class="fw-bold mb-0">$180</p>
                             </div>
@@ -265,7 +268,7 @@
                             <div class="card-body d-flex flex-column justify-content-center">
                               <h3 class="h6 mb-1">Alpine Sleeping Bag</h3>
                               <div class="mb-2">
-                                <span class="stars text-secondary">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+                                <span class="text-secondary">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
                               </div>
                               <p class="fw-bold mb-0">$240</p>
                             </div>
@@ -291,7 +294,7 @@
                             <div class="card-body d-flex flex-column justify-content-center">
                               <h3 class="h6 mb-1">Stormproof Tent</h3>
                               <div class="mb-2">
-                                <span class="stars text-secondary">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                                <span class="text-secondary">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
                               </div>
                               <p class="fw-bold mb-0">$360</p>
                             </div>
@@ -317,7 +320,7 @@
                             <div class="card-body d-flex flex-column justify-content-center">
                               <h3 class="h6 mb-1">Hiking Poles</h3>
                               <div class="mb-2">
-                                <span class="stars text-secondary">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+                                <span class="text-secondary">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
                               </div>
                               <p class="fw-bold mb-0">$110</p>
                             </div>
@@ -343,7 +346,7 @@
                             <div class="card-body d-flex flex-column justify-content-center">
                               <h3 class="h6 mb-1">Trail Stove</h3>
                               <div class="mb-2">
-                                <span class="stars text-secondary">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                                <span class="text-secondary">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
                               </div>
                               <p class="fw-bold mb-0">$95</p>
                             </div>
@@ -391,27 +394,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="js/cart.js"></script>
-    <script>updateCartCount()
-        /* scroll to top function */
-        // Get the button:
-        let mybutton = document.getElementById("myBtn");
-
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function() {scrollFunction()};
-
-        function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            mybutton.style.display = "block";
-        } else {
-            mybutton.style.display = "none";
-        }
-        }
-
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-        }
-    </script>
+    <script src="js/common.js"></script>
   </body>
 </html>

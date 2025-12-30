@@ -318,7 +318,7 @@
                 </div>
 
                 <div class="d-flex justify-content-between mb-3">
-                    <span class="text-muted small text-uppercase">Taxes</span>
+                    <span class="text-muted small text-uppercase">Includes gst</span>
                     <span id="summary-taxes">$0</span>
                 </div>
 
@@ -361,70 +361,15 @@
       </footer>
 </div>
 
+<script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+      integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+      crossorigin="anonymous"
+    ></script>
 <script src="js/products.js"></script>
 <script src="js/cart.js"></script>
+<script src="js/common.js"></script>
+<script src="js/cart-page.js"></script>
 
-<script>
-  updateCartCount();
-  renderCartStep1({
-    itemsContainerSelector: "#cart-items",
-    summaryItemsSelector: "#summary-items",
-    subtotalSelector: "#summary-subtotal",
-    shippingSelector: "#summary-shipping",
-    taxesSelector: "#summary-taxes",
-    totalSelector: "#summary-total",
-  });
-</script>
-<!-- Replace the JS that targets .step-tab with this (Bootstrap classes, no custom CSS needed) -->
-<script>
-  const tabs = Array.from(document.querySelectorAll("#checkoutSteps .nav-link"));
-  const panels = Array.from(document.querySelectorAll("[data-step-panel]"));
-
-  function getActiveStep() {
-    return Number(tabs.find(t => t.classList.contains("active"))?.dataset.step) || 1;
-  }
-
-  function setStep(step) {
-    const s = Number(step);
-
-    // Tabs (Bootstrap native: .nav-link + .active)
-    tabs.forEach((t) => {
-      const isActive = Number(t.dataset.step) === s;
-      t.classList.toggle("active", isActive);
-      t.setAttribute("aria-selected", String(isActive));
-
-      // aria-current for checkout semantics
-      if (isActive) t.setAttribute("aria-current", "step");
-      else t.removeAttribute("aria-current");
-    });
-
-    // Panels
-    panels.forEach((p) => {
-      const show = Number(p.dataset.stepPanel) === s;
-      p.classList.toggle("d-none", !show);
-    });
-  }
-
-  // Click top nav links
-  tabs.forEach((t) =>
-    t.addEventListener("click", (e) => {
-      e.preventDefault(); // stay on page (don’t jump to anchor)
-      setStep(t.dataset.step);
-    })
-  );
-
-  // Next/Prev buttons (unchanged concept)
-  document.addEventListener("click", (e) => {
-    const next = e.target.closest("[data-next]");
-    const prev = e.target.closest("[data-prev]");
-    if (!next && !prev) return;
-
-    const active = getActiveStep();
-    if (next) setStep(Math.min(3, active + 1));
-    if (prev) setStep(Math.max(1, active - 1));
-  });
-
-  setStep(1);
-</script>
 </body>
 </html>

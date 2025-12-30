@@ -81,7 +81,7 @@
                 <h1 id="productTitle" class="mb-2">Product title</h1>
 
                 <div class="d-flex align-items-center gap-2 mb-4">
-                  <span id="productStars" class="stars text-secondary" aria-label="Product rating"></span>
+                  <span id="productStars" class="text-secondary" aria-label="Product rating"></span>
                   <span id="productReviewCount" class="text-muted small"></span>
                 </div>
 
@@ -108,7 +108,10 @@
           </section>
 
         <!-- Scroll to top button -->
-        <button onclick="topFunction()" id="myBtn" title="Go to top" class="btn btn-primary rounded-circle">Top</button>
+        <button id="topBtn" 
+        title="Go to top"  
+        class="btn btn-primary position-fixed bottom-0 end-0 m-3 rounded-circle d-flex align-items-center justify-content-center d-none"
+        type="button" aria-label="Scroll to top">Top</button>
 
           <!-- Similar Products -->
           <section class="py-5 border-top">
@@ -155,170 +158,9 @@
       integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
       crossorigin="anonymous"
     ></script>
-
     <script src="js/products.js"></script>
     <script src="js/cart.js"></script>
-
-    <script>
-        /* scroll to top function */
-        // Get the button:
-        let mybutton = document.getElementById("myBtn");
-
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function() {scrollFunction()};
-
-        function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            mybutton.style.display = "block";
-        } else {
-            mybutton.style.display = "none";
-        }
-        }
-
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-        }
-
-        updateCartCount();
-
-    function starsHTML(rating) {
-        const full = "&#9733;".repeat(Math.max(0, Math.min(5, rating)));
-        const empty = "&#9734;".repeat(5 - Math.max(0, Math.min(5, rating)));
-        return full + empty;
-    }
-
-    function currency(n) {
-        return `$${Number(n).toFixed(0)}`;
-    }
-
-    function getProductIdFromURL() {
-        const params = new URLSearchParams(window.location.search);
-        const raw = params.get("id");
-        const id = Number(raw);
-        return Number.isFinite(id) && PRODUCTS[id] ? id : 1;
-    }
-
-    function renderProduct(product) {
-        document.title = `Aotearoa Adventure Gear | ${product.name}`;
-
-        const img = document.getElementById("productImage");
-        const title = document.getElementById("productTitle");
-        const stars = document.getElementById("productStars");
-        const count = document.getElementById("productReviewCount");
-        const price = document.getElementById("productPrice");
-        const desc = document.getElementById("productDescription");
-        const select = document.getElementById("model-select");
-
-        img.src = product.image;
-        img.alt = product.name;
-
-        title.textContent = product.name;
-        stars.innerHTML = starsHTML(product.rating);
-        stars.setAttribute("aria-label", `${product.rating} out of 5 stars`);
-
-        count.textContent = `${product.reviewCount} reviews`;
-        price.textContent = currency(product.price);
-        desc.textContent = product.description;
-
-        // Models
-        select.innerHTML = "";
-        const placeholder = document.createElement("option");
-        placeholder.selected = true;
-        placeholder.disabled = true;
-        placeholder.textContent = "Select Model";
-        select.appendChild(placeholder);
-
-        product.models.forEach((m) => {
-        const opt = document.createElement("option");
-        opt.value = m;
-        opt.textContent = m;
-        select.appendChild(opt);
-        });
-
-        // Add-to-cart
-        const addBtn = document.getElementById("addToCartBtn");
-        addBtn.onclick = () => {
-        const chosenModel = select.value && select.value !== "Select Model" ? select.value : null;
-
-        // optional: require model selection
-        if (!chosenModel) {
-            select.focus();
-            return;
-        }
-
-        addToCart(product.id, 1, chosenModel);
-        window.location.href = "cart.html";
-        };
-    }
-
-    function renderSimilarProducts(currentId) {
-        const wrap = document.getElementById("similarProducts");
-        wrap.innerHTML = "";
-
-        const ids = Object.keys(PRODUCTS).map(Number).filter((id) => id !== currentId);
-        const similar = ids.slice(0, 3).map((id) => PRODUCTS[id]);
-
-        similar.forEach((p) => {
-        const col = document.createElement("div");
-        col.className = "col-12 col-md-4";
-        col.innerHTML = `
-            <a href="product.html?id=${p.id}" class="text-decoration-none text-reset">
-            <div class="d-flex align-items-center gap-3">
-                <img src="${p.image}" alt="${p.name}" class="img-fluid" style="max-width: 110px" />
-                <div>
-                <p class="mb-1 small text-uppercase text-muted">${p.name}</p>
-                <div class="mb-1"><span class="stars text-secondary">${starsHTML(p.rating)}</span></div>
-                <p class="mb-0">${currency(p.price)}</p>
-                </div>
-            </div>
-            </a>
-        `;
-        wrap.appendChild(col);
-        });
-    }
-
-    function renderReviews(product) {
-        const wrap = document.getElementById("reviewsList");
-        wrap.innerHTML = "";
-
-        product.reviews.forEach((r, idx) => {
-        const row = document.createElement("div");
-        row.className = `row g-4 align-items-start py-4 border-bottom`;
-        row.innerHTML = `
-            <div class="col-12 col-md-4">
-            <div class="d-flex align-items-start gap-3">
-                <div class="rounded-circle border d-flex align-items-center justify-content-center"
-                    style="width:56px;height:56px" aria-hidden="true">
-                <span class="text-muted">&#128100;</span>
-                </div>
-                <div>
-                <p class="mb-0 fw-bold">${r.name}</p>
-                <p class="mb-2 text-muted small">${r.date}</p>
-                <div><span class="stars text-secondary">${starsHTML(r.rating)}</span></div>
-                </div>
-            </div>
-            </div>
-            <div class="col-12 col-md-8">
-            <p class="text-muted">${r.text}</p>
-            </div>
-        `;
-        wrap.appendChild(row);
-        });
-    }
-
-    // Init
-    (function init() {
-        const id = getProductIdFromURL();
-        const product = PRODUCTS[id];
-
-        renderProduct(product);
-        renderSimilarProducts(id);
-        renderReviews(product);
-
-        updateCartCount(); // optional badge
-    })();
-    </script>
+    <script src="js/common.js"></script>
+    <script src="js/product-page.js"></script>
   </body>
 </html>

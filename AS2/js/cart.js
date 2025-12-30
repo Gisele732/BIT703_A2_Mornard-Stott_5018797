@@ -63,14 +63,22 @@ function getSelectedShippingMode() {
   return checked ? checked.value : "standard";
 }
 
+// Update totals when shipping radios change (Step 2)
 function calculateShipping(subtotal) {
   if (subtotal <= 0) return 0;
-  if (subtotal >= FREE_SHIPPING_THRESHOLD) return 0; // automatic offer
 
   const mode = getSelectedShippingMode();
-  if (mode === "free") return 0;
+
+  // Next day is always paid, even when free shipping is eligible
   if (mode === "nextday") return NEXT_DAY_FEE;
-  return SHIPPING_FEE; // standard
+
+  // Free only if eligible AND selected
+  if (mode === "free") {
+    return subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_FEE;
+  }
+
+  // Standard (default)
+  return SHIPPING_FEE;
 }
 
 function cartTotals() {
@@ -92,10 +100,16 @@ function cartTotals() {
   const subtotal = items.reduce((sum, i) => sum + i.lineTotal, 0);
   const shipping = calculateShipping(subtotal);
 
-  // simple tax logic (replace with your preferred rule if needed)
-  const taxes = subtotal > 0 ? 13 : 0;
+  // simple tax logic
+  const subtotalPlusShipping = subtotal + shipping;
+  // GST portion of an inclusive price (15%)
+  const taxes =
+    subtotalPlusShipping > 0
+      ? Math.round((subtotalPlusShipping * 15) / 115)
+      : 0;
 
-  const total = subtotal + shipping + taxes;
+  // Total stays the same because GST is already included
+  const total = subtotalPlusShipping;
 
   return { items, subtotal, shipping, taxes, total };
 }
@@ -110,9 +124,9 @@ function syncShippingOfferUI({
   freeRadioId = "shipFree",
   nextDayRadioId = "shipNext",
   bannerId = "freeShippingBanner",
-  progressId = "freeShippingProgress"
+  progressId = "freeShippingProgress",
+  subtotal
 } = {}) {
-  const { subtotal } = cartTotals();
   const eligible = subtotal >= FREE_SHIPPING_THRESHOLD && subtotal > 0;
   const remaining = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal);
 
@@ -122,29 +136,54 @@ function syncShippingOfferUI({
   const banner = document.getElementById(bannerId);
   const progress = document.getElementById(progressId);
 
-  if (free && standard) {
-    if (eligible) {
-      free.checked = true;
-      standard.checked = false;
-      if (next) next.checked = false;
+  // If elements aren't on this page/step, just bail safely
+  if (!free && !standard && !next) return;
 
-      standard.disabled = true;
-      if (next) next.disabled = true;
+  if (eligible) {
+    // Free available
+    if (free) free.disabled = false;
+
+    // Standard becomes redundant (optional choice: disable it)
+    if (standard) standard.disabled = true;
+
+    // Next day is still available as a paid upgrade
+    if (next) next.disabled = false;
+
+    const nextChosen = !!(next && next.checked);
+
+    if (nextChosen) {
+      // User chose next day: make sure free/standard aren't also selected
+      if (free) free.checked = false;
+      if (standard) standard.checked = false;
     } else {
-      standard.disabled = false;
-      if (next) next.disabled = false;
-
-      // don't force-select standard if user already chose something
-      const mode = getSelectedShippingMode();
-      if (!mode && standard) standard.checked = true;
+      // Default to free when eligible (only if next isn't chosen)
+      if (free) free.checked = true;
+      if (standard) standard.checked = false;
     }
+  } else {
+    // Not eligible: disable free and ensure it's not selected
+    if (free) {
+      free.disabled = true;
+      if (free.checked) free.checked = false;
+    }
+
+    // Paid options available
+    if (standard) standard.disabled = false;
+    if (next) next.disabled = false;
+
+    // If neither standard nor next is selected, default to standard
+    const mode = (document.querySelector('input[name="shipping"]:checked') || {}).value;
+    if (!mode && standard) standard.checked = true;
+
+    // If free had been selected earlier, force standard
+    if (standard && !next?.checked) standard.checked = true;
   }
 
   if (banner) banner.classList.toggle("d-none", !eligible);
 
   if (progress) {
     progress.textContent = eligible
-      ? "Free shipping applied."
+      ? "Free shipping available (Next day available as upgrade)."
       : `Spend $${remaining.toFixed(0)} more to unlock free shipping (orders over $600).`;
   }
 }
@@ -215,10 +254,18 @@ function renderCartStep1({
   const container = document.querySelector(itemsContainerSelector);
   if (!container) return;
 
-  const { items, subtotal, shipping, taxes, total } = cartTotals();
+  // Pass 1: get items + subtotal (shipping may be stale if "free" was previously checked)
+  let { items, subtotal } = cartTotals();
+
+  // Sync shipping UI based on current subtotal (forces off "free" when under threshold,
+  // disables/enables options, updates banner)
+  syncShippingOfferUI({ subtotal });
+
+  // Pass 2: totals after shipping UI is corrected
+  const { shipping, taxes, total } = cartTotals();
 
   // LEFT: items
-  if (items.length === 0) {
+  if (!items || items.length === 0) {
     container.innerHTML = `<p class="text-muted mb-0">Your cart is empty.</p>`;
   } else {
     container.innerHTML = items
@@ -282,9 +329,6 @@ function renderCartStep1({
   if (s3) s3.textContent = currency(taxes);
   if (s4) s4.textContent = currency(total);
 
-  // Shipping offer banner + radio states (if Step 2 exists on page)
-  syncShippingOfferUI();
-
   // events: qty
   container.querySelectorAll("[data-qty]").forEach((input) => {
     input.addEventListener("input", (e) => {
@@ -304,22 +348,6 @@ function renderCartStep1({
   container.querySelectorAll("[data-remove]").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       removeItem(Number(e.target.dataset.remove));
-      renderCartStep1({
-        itemsContainerSelector,
-        summaryItemsSelector,
-        subtotalSelector,
-        shippingSelector,
-        taxesSelector,
-        totalSelector
-      });
-    });
-  });
-
-  // Update totals when shipping radio changes (Step 2)
-  document.querySelectorAll('input[name="shipping"]').forEach((r) => {
-    if (r.dataset.bound === "1") return;
-    r.dataset.bound = "1";
-    r.addEventListener("change", () => {
       renderCartStep1({
         itemsContainerSelector,
         summaryItemsSelector,
