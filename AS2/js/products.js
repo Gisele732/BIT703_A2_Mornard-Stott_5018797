@@ -1,4 +1,3 @@
-// js/products.js
 const PRODUCTS = {
   1: {
     id: 1,

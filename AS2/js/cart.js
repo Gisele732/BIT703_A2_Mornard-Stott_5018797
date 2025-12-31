@@ -116,7 +116,7 @@ function cartTotals() {
 
 /**
  * Sync the Shipping Details step UI (radios + offer banner) to current cart totals.
- * - If eligible for free shipping, force "free" selection and disable paid options.
+ * - If eligible for free shipping, force "free" selection and disable standard paid option.
  * - Otherwise, ensure paid options are enabled (does not override user choice).
  */
 function syncShippingOfferUI({
@@ -143,7 +143,7 @@ function syncShippingOfferUI({
     // Free available
     if (free) free.disabled = false;
 
-    // Standard becomes redundant (optional choice: disable it)
+    // Standard becomes redundant 
     if (standard) standard.disabled = true;
 
     // Next day is still available as a paid upgrade

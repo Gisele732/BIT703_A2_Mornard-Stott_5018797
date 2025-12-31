@@ -248,7 +248,7 @@
     });
   }
 
-  // Validate shipping inputs live (optional, keeps messages accurate)
+  // Validate shipping inputs live
   if (shippingForm) {
     [el.postcode, el.phone].forEach((input) => {
       if (!input) return;
